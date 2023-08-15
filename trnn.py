@@ -149,8 +149,10 @@ class TGRUStateTuple(_TGRUStateTuple):
     @property
     def dtype(self):
         (c, h) = self
-        if not c.dtype == h.dtype:
-            raise TypeError("Inconsistent internal state: %s vs %s" % (str(c.dtype), str(h.dtype)))
+        if c.dtype != h.dtype:
+            raise TypeError(
+                f"Inconsistent internal state: {str(c.dtype)} vs {str(h.dtype)}"
+            )
         return c.dtype
 
 class TGRUCell(RNNCell):

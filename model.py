@@ -71,16 +71,13 @@ class Seq2Point:
     def __add_summary__(self, name):
         print('summary')
         summary = [
-            tf.summary.scalar(name + '/loss', self.loss),
-            tf.summary.scalar(name + '/metrics/acc', self.acc),
-            tf.summary.scalar(name + '/metrics/precision', self.precision),
-            tf.summary.scalar(name + '/metrics/recall', self.recall),
-            tf.summary.scalar(name + '/metrics/auc', self.auc),
-            # tf.summary.histogram(name+'/attention', self.att_value),
-            # tf.summary.histogram(name+'/final_out', self.final_out),
+            tf.summary.scalar(f'{name}/loss', self.loss),
+            tf.summary.scalar(f'{name}/metrics/acc', self.acc),
+            tf.summary.scalar(f'{name}/metrics/precision', self.precision),
+            tf.summary.scalar(f'{name}/metrics/recall', self.recall),
+            tf.summary.scalar(f'{name}/metrics/auc', self.auc),
         ]
-        summary_op = tf.summary.merge(summary)
-        return summary_op
+        return tf.summary.merge(summary)
 
     def __evaluation__(self):
         print('evaluation')
